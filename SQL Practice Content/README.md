@@ -97,3 +97,55 @@ WHERE condition(s)
 ORDER BY column ASC/DESC
 LIMIT num_limit OFFSET num_offset;
 ```
+## 4. Database normalization
+
+Database normalization is useful because it minimizes duplicate data in any single table, and allows for data in the database to grow independently of each other.
+
+## Multi-table queries with JOINs:
+
+### INNER JOIN:
+
+Returns only the rows that have matching values in both tables.Used when you need to retrieve records with matching values in both tables. Commonly used for combining data that is related through a foreign key.
+
+Select query with INNER JOIN on multiple tables:
+
+```sql
+SELECT column, another_table_column, …
+FROM mytable
+INNER JOIN another_table 
+    ON mytable.id = another_table.id
+WHERE condition(s)
+ORDER BY column, … ASC/DESC
+LIMIT num_limit OFFSET num_offset;
+```
+
+### OUTER JOIN:
+
+An OUTER JOIN in SQL combines rows from two or more tables and retains unmatched records by filling missing data with NULL values.
+
+Select query with OUTER JOIN on multiple tables:
+
+```sql
+SELECT column, another_column, …
+FROM mytable
+INNER/LEFT/RIGHT/FULL JOIN another_table 
+    ON mytable.id = another_table.matching_id
+WHERE condition(s)
+ORDER BY column, … ASC/DESC
+LIMIT num_limit OFFSET num_offset;
+```
+### LEFT JOIN:
+
+Returns all rows from the left table and the matched rows from the right table. Rows in the left table with no match in the right table will contain NULL.	Useful for retrieving all records from the left table, with the matching data in the right table, if available. Often used when you need to find all entries in one table and see if they have corresponding entries in another.
+
+### RIGHT JOIN:
+
+Returns all rows from the right table and the matched rows from the left table. Rows in the right table with no match in the left table will contain NULL.	Similar to LEFT JOIN but focuses on the right table. Used when you need all records from the right table whether or not they have matches in the left table.
+
+### Full JOIN:
+
+Returns all rows when there is a match in either left or right table records. If there is no match, the result is NULL on the side that does not have a match.	Useful for combining data that exists in either of the tables and capturing unmatched data from both tables.
+
+### SELF JOIN:
+
+A join in which a table is joined with itself.	Employed when you need to compare rows within the same table, such as finding relationships in hierarchical data or comparing values in various rows.
