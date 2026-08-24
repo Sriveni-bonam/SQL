@@ -149,3 +149,36 @@ Returns all rows when there is a match in either left or right table records. If
 ### SELF JOIN:
 
 A join in which a table is joined with itself.	Employed when you need to compare rows within the same table, such as finding relationships in hierarchical data or comparing values in various rows.
+
+
+## 5. NULL/ not NULL values:
+
+Select query with constraints on NULL values:
+
+```sql
+SELECT column, another_column, …
+FROM mytable
+WHERE column IS/IS NOT NULL
+AND/OR another_condition
+AND/OR …;
+```
+
+## 6. Queries with aggregates:
+
+Select query with aggregate functions over all rows:
+
+```sql
+SELECT AGG_FUNC(column_or_expression) AS aggregate_description, …
+FROM mytable
+WHERE constraint_expression;
+```
+
+### Numerical Operators
+
+| Operator | Condition | SQL Example |
+|---|---|---|
+| `=`, `!=`, `<`, `<=`, `>`, `>=` | Standard numerical operators | `col_name != 4` |
+| `BETWEEN ... AND ...` | Number is within a range of two values (inclusive) | `col_name BETWEEN 1.5 AND 10.5` |
+| `NOT BETWEEN ... AND ...` | Number is not within a range of two values (inclusive) | `col_name NOT BETWEEN 1 AND 10` |
+| `IN (...)` | Number exists in a list | `col_name IN (2, 4, 6)` |
+| `NOT IN (...)` | Number does not exist in a list | `col_name NOT IN (1, 3, 5)` |
